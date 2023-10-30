@@ -39,6 +39,20 @@
   cursor: pointer;
   border-radius: 10px;
 }
+.login {
+  margin-left: 30%;
+}
+.nav-right {
+  text-align: right;
+}
+.logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  float: left;
+  margin-top: 3px;
+  margin-left: 10px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

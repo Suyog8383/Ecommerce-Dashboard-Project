@@ -1,20 +1,30 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("users");
+    if (auth) {
+      navigate("/");
+    }
+  }, []);
+
   const handleSignUp = async () => {
     console.log(name, email, password);
     let result = await fetch("http://localhost:1200/register", {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
     });
     result = await result.json();
+    localStorage.setItem("users", JSON.stringify(result));
     console.log(result);
     navigate("/");
   };
