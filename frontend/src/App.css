@@ -39,7 +39,8 @@
   cursor: pointer;
   border-radius: 10px;
 }
-.login {
+.login,
+.product {
   margin-left: 30%;
 }
 .nav-right {
@@ -57,7 +58,12 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.invalid-input {
+  display: block;
+  color: red;
+  margin-top: -20px;
+  margin-left: 20px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
