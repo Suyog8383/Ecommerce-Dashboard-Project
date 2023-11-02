@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateComp from "./components/PrivateComponent";
 import Login from "./components/Login";
 import AddProduct from "./components/AddProduct";
+import Products from "./components/Products";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route element={<PrivateComp />}>
-            <Route path="/" element={<h1>Products</h1>} />
+            <Route path="/" element={<Products />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="/update" element={<h1>Update Products</h1>} />
             <Route path="/logout" element={<h1>Logout Products</h1>} />

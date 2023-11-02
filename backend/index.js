@@ -36,6 +36,11 @@ app.post("/add-product", async (req, resp) => {
   resp.send(result);
 });
 
+app.delete("/products/:id", async (req, resp) => {
+  let result = await product.deleteOne({ _id: req.params.id });
+  resp.send(result);
+});
+
 app.get("/products", async (req, resp) => {
   const products = await product.find();
   if (products.length > 0) {
