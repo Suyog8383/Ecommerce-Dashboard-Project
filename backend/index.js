@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [""],
+    origin: ["https://ecommerce-frontend-project.vercel.app/signUp"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
