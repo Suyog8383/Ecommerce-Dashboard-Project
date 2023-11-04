@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "../config/http/http.config";
 
 const AddProduct = () => {
   const [proName, setProName] = useState("");
@@ -16,10 +17,11 @@ const AddProduct = () => {
       return;
     }
 
-    let result = await fetch("http://localhost:1200/add-product", {
+    let result = await fetch(`${BASE_URL}/add-product`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
       body: JSON.stringify({
         name: proName,
@@ -30,6 +32,13 @@ const AddProduct = () => {
       }),
     });
     result = await result.json();
+    if (result) {
+      alert("product added successfully");
+      setProName("");
+      setCategory("");
+      setCompany("");
+      setPrice("");
+    }
     console.log(result);
   };
   return (

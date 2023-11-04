@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../config/http/http.config";
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const SignUp = () => {
 
   const handleSignUp = async () => {
     console.log(name, email, password);
-    let result = await fetch("http://localhost:1200/register", {
+    let result = await fetch(`${BASE_URL}/register`, {
       method: "post",
       body: JSON.stringify({ name, email, password }),
       headers: {
@@ -24,7 +25,9 @@ const SignUp = () => {
       },
     });
     result = await result.json();
-    localStorage.setItem("users", JSON.stringify(result));
+    console.log(result);
+    localStorage.setItem("users", JSON.stringify(result.data.result));
+    localStorage.setItem("token", JSON.stringify(result.token.token));
     console.log(result);
     navigate("/");
   };

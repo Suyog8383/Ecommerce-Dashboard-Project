@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../config/http/http.config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = async () => {
-    let result = await fetch("http://localhost:1200/login", {
+    let result = await fetch(`${BASE_URL}/login`, {
       method: "post",
       body: JSON.stringify({ email, password }),
       headers: {
@@ -22,8 +23,10 @@ const Login = () => {
       },
     });
     result = await result.json();
+    console.log(result);
     if (result.data.user.name) {
-      localStorage.setItem("users", JSON.stringify(result));
+      localStorage.setItem("users", JSON.stringify(result.data.user));
+      localStorage.setItem("token", JSON.stringify(result.token.token));
       navigate("/");
     }
     console.log("@SN ", result);

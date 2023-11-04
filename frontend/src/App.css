@@ -77,6 +77,13 @@
 .product-list ul {
   margin: 0;
 }
+.searchProductBox {
+  width: 400px;
+  margin: 20px;
+  height: 38px;
+  padding-left: 30px;
+  border: 1px solid greenyellow;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
