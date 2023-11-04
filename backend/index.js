@@ -8,7 +8,13 @@ const jwtKey = "eco-comm";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [""],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 app.post("/register", async (req, resp) => {
   console.log(req.body);
