@@ -10,7 +10,7 @@ const AddProduct = () => {
 
   const addProducts = async () => {
     let user = localStorage.getItem("users");
-    let userId = JSON.parse(user).data.user._id;
+    let userId = JSON.parse(user)._id;
 
     if (!proName || !proPrice || !proCategory || !proCompany) {
       setError(true);
