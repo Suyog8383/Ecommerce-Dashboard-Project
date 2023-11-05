@@ -16,6 +16,10 @@ app.use(
   })
 );
 
+app.get("/",(req,resp)=>{
+  resp.json("Hello");
+})
+
 app.post("/register", async (req, resp) => {
   console.log(req.body);
   let user = new users(req.body);
